@@ -61,7 +61,7 @@ function Mainapp() {
         Image Detection
       </button>
       <div>{imageName && <img src={imageName} alt="ml" />}</div>
-      <CSVLink data={csvData}>Download me</CSVLink>;
+      <CSVLink data={csvData}>Download CSV Report</CSVLink>;
     </div>
   );
 }
