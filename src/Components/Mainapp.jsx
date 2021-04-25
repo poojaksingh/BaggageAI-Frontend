@@ -1,15 +1,31 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Axios from "axios";
+import { CSVLink, CSVDownload } from "react-csv";
+
 
 function Mainapp() {
   const [image, setImage] = useState("");
   const [imageName, setImageName] = useState("");
   const [xmlFile, setXmlFile] = useState("");
+  const [csvData, setcsvData] = useState([]);
+   
 
+  const sendData =async (name) => {
+
+     let {data} = await Axios.get('http://localhost:5000/' )
+      // await axios.post('http://localhost:5000/postData',{name})
+      console.log(data)
+      setcsvData(data)
+    
+      };
+      useEffect(() => {
+        sendData() ;
+        
+    }, [])
   const _detection = async () => {
     console.log(image);
     console.log(xmlFile);
-
+   
     const formData = new FormData();
     formData.append("image", image);
     formData.append("xml", xmlFile);
@@ -45,6 +61,7 @@ function Mainapp() {
         Image Detection
       </button>
       <div>{imageName && <img src={imageName} alt="ml" />}</div>
+      <CSVLink data={csvData}>Download me</CSVLink>;
     </div>
   );
 }
