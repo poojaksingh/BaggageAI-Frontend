@@ -1,6 +1,8 @@
 # Baggage AI
 ```
-1. npm i 
-2. npm start
-
+1. Install node packages
+   npm install 
+    
+2. Run React Project
+   npm start
 ```
